@@ -2,7 +2,11 @@ const animalFact = document.getElementById("animal-fact");
 const nextButton = document.getElementById("next-button");
 
 function getAnimalFact() {
-  return "random fact about animals";
+  fetch("https://upbeat-benz-235f24.netlify.app/.netlify/functions/fact").then(
+    function (response) {
+      return response.json();
+    }
+  );
 }
 
 function renderAnimalFact(fact) {
@@ -10,7 +14,8 @@ function renderAnimalFact(fact) {
 }
 
 nextButton.onclick = function () {
-  const fact = getAnimalFact();
-  renderAnimalFact(fact);
+  getAnimalFact().then(function (fact) {
+    renderAnimalFact(fact);
+  });
 };
 renderAnimalFact("click next to get an animal fact");

@@ -10,6 +10,6 @@ exports.handler = async (events) => {
   const random = catFacts[Math.floor(Math.random() * catFacts.length)];
   return {
     statusCode: 200,
-    body: `${random}!`,
+    body: `"${random}!"`,
   };
 };
